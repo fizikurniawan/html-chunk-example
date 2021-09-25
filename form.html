@@ -110,12 +110,12 @@
     var file_name = null;
     const slice_size = 16384;
 
-    console.log("helllo");
+    // url to endpoint chunk upload
     const baseURL = "http://127.0.0.1:8000/reference/chunk-upload/";
 
     $.ajaxSetup({
       headers: {
-        Authorization: "Token 94dc0f7c88e1eeb01578f002bcab497d58469e5f",
+        Authorization: "Token <your drf token>",
       },
     });
 
