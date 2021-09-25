@@ -1,236 +1,258 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous"
+/>
 <div class="breadcrumb btn-breadcrumb btn-group" id="breadcrumb"></div>
 
 <body>
-<form method="POST" id="form" enctype="multipart/form-data">
-  {% csrf_token %}
-  <div class="row row-sm">
-    <div class="col-md-12">
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h5 class="box-title">{{title}}</h5>
-          <hr />
-        </div>
-      </div>
-    </div>
-    <input type="file" id="id_file">
-  </div>
-  <div class="row row-sm">
-    <div class="col-md-12 pt-5">
-      <button type="submit" class="btn btn-primary btn-lg">
-        <em class="far fa-save"></em>Save
-      </button>
-    </div>
-  </div>
-</form>
-
-<div
-  class="modal fade"
-  id="id_modal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-success">
-        <h5 class="modal-title text-white" id="exampleModalLabel">Uploading</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="progress" style="height: 2em">
-          <div
-            class="progress-bar uploadProgressBar"
-            role="progressbar"
-            style="width: 0%"
-            aria-valuenow="0"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >
-            0%
+  <form method="POST" id="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row row-sm">
+      <div class="col-md-12">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h5 class="box-title">{{title}}</h5>
+            <hr />
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary uploading_close_btn"
-          data-dismiss="modal"
-        >
-          Close
+      <input type="file" id="id_file" />
+    </div>
+    <div class="row row-sm">
+      <div class="col-md-12 pt-5">
+        <button type="submit" class="btn btn-primary btn-lg">
+          <em class="far fa-save"></em>Save
         </button>
       </div>
     </div>
+  </form>
+
+  <div
+    class="modal fade"
+    id="id_modal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-success">
+          <h5 class="modal-title text-white" id="exampleModalLabel">
+            Uploading
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="progress" style="height: 2em">
+            <div
+              class="progress-bar uploadProgressBar"
+              role="progressbar"
+              style="width: 0%"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              0%
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary uploading_close_btn"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script  type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.min.js"></script>
-<script  type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
-<script type="text/javascript">
-  var is_video_changed = false;
-  var is_video_done = false;
-  var file_name = null;
-  const slice_size = 16384;
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"
+  ></script>
+  <script type="text/javascript">
+    var is_video_changed = false;
+    var is_video_done = false;
+    var file_name = null;
+    const slice_size = 16384;
 
-  const baseURL = "http://localhost:8000/reference/chunk-upload/"
+    console.log("helllo");
+    const baseURL = "http://127.0.0.1:8000/reference/chunk-upload/";
 
-  
-  $.ajaxSetup({
-    headers: {
-      "Authorization": "Token <your-drf-token>"
-    }
-  });
+    $.ajaxSetup({
+      headers: {
+        Authorization: "Token 94dc0f7c88e1eeb01578f002bcab497d58469e5f",
+      },
+    });
 
-  $("#btn-save").click(function () {
-    $(document).find("form").submit();
-  });
+    $("#btn-save").click(function () {
+      $(document).find("form").submit();
+    });
 
-  $("#id_file").change(function () {
-    $("#id_file").prev().prev().css("display", "none");
-    $("#id_file").prev().prev().prev().css("display", "none");
-    upload_prgoress_html(0);
+    $("#id_file").change(function () {
+      $("#id_file").prev().prev().css("display", "none");
+      $("#id_file").prev().prev().prev().css("display", "none");
+      upload_prgoress_html(0);
 
-    is_video_changed = true;
-    let file = $(this)[0]["files"][0];
-    file_name = guid() + "." + file.name.split(".").pop();
-    var reader = new FileReader();
+      is_video_changed = true;
+      let file = $(this)[0]["files"][0];
+      file_name = guid() + "." + file.name.split(".").pop();
+      var reader = new FileReader();
 
-    upload_prgoress_html(0.01);
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      let encoded_file = reader.result;
-      upload_video(encoded_file);
-    };
-    reader.onerror = function (error) {
-      console.log("Error: ", error);
-      alert("Error loading modified data to base64");
-    };
-  });
+      upload_prgoress_html(0.01);
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        let encoded_file = reader.result;
+        upload_video(encoded_file);
+      };
+      reader.onerror = function (error) {
+        console.log("Error: ", error);
+        alert("Error loading modified data to base64");
+      };
+    });
 
-  $("#form").validate({
-    submitHandler: function (form) {
-      // do other things for a valid form
-      if (is_video_changed) {
-        if (is_video_done) {
-          $("#id_file").remove();
-          $("#id_file_name").val(file_name);
-          form.submit();
-        } else {
-          alert("Video is still processed, please wait");
-        }
-      } else {
-        form.submit();
-      }
-    },
-  });
- 
-  function upload_video(base64file) {
-    if (!file_name) {
-      return false;
-    }
-    data_size = base64file.length;
-    chunk_count = parseInt(data_size / slice_size) + 1;
-
-    $.post(
-      baseURL + "?is_init=true",
-      { file_name: file_name },
-      send_file
-    );
-
-    return true;
-
-    function send_file(data) {
-      var chunk_done = 0;
-      for (var offset = 0; offset < data_size; offset += slice_size) {
-        let chunk = base64file.slice(offset, offset + slice_size);
-        let body_post = {
-          chunk: chunk,
-          file_name: file_name,
-          chunk_no: offset / slice_size,
-        };
-        $.post(baseURL, body_post, function (
-          data
-        ) {
-          console.log(data);
-          upload_prgoress_html(chunk_done / chunk_count);
-          chunk_done++;
-          if (chunk_done == chunk_count) {
-            checksum();
+    $("#form").validate({
+      submitHandler: function (form) {
+        // do other things for a valid form
+        if (is_video_changed) {
+          if (is_video_done) {
+            $("#id_file").remove();
+            $("#id_file_name").val(file_name);
+            form.submit();
+          } else {
+            alert("Video is still processed, please wait");
           }
-        });
-      }
-    }
+        } else {
+          form.submit();
+        }
+      },
+    });
 
-    function checksum() {
-      console.log({
-        file_name: file_name,
-        chunk_count: chunk_count,
-        checksum: md5(base64file),
-      });
-      $.post(
-        baseURL + "?is_checksum=true",
-        {
+    function upload_video(base64file) {
+      if (!file_name) {
+        return false;
+      }
+      data_size = base64file.length;
+      chunk_count = parseInt(data_size / slice_size) + 1;
+
+      $.post(baseURL + "?is_init=true", { file_name: file_name }, send_file);
+
+      return true;
+
+      function send_file(data) {
+        var chunk_done = 0;
+        for (var offset = 0; offset < data_size; offset += slice_size) {
+          let chunk = base64file.slice(offset, offset + slice_size);
+          let body_post = {
+            chunk: chunk,
+            file_name: file_name,
+            chunk_no: offset / slice_size,
+          };
+          $.post(baseURL, body_post, function (data) {
+            console.log(data);
+            upload_prgoress_html(chunk_done / chunk_count);
+            chunk_done++;
+            if (chunk_done == chunk_count) {
+              checksum();
+            }
+          });
+        }
+      }
+
+      function checksum() {
+        console.log({
           file_name: file_name,
           chunk_count: chunk_count,
           checksum: md5(base64file),
-        },
-        function (data) {
-          console.log(data);
-          upload_prgoress_html(1);
-          is_video_done = true;
-        }
+        });
+        $.post(
+          baseURL + "?is_checksum=true",
+          {
+            file_name: file_name,
+            chunk_count: chunk_count,
+            checksum: md5(base64file),
+          },
+          function (data) {
+            console.log(data);
+            upload_prgoress_html(1);
+            is_video_done = true;
+          }
+        );
+      }
+    }
+
+    function upload_prgoress_html(percent) {
+      $("#id_modal").modal("show");
+      percentComplete = parseInt(parseFloat(percent) * 100);
+
+      $(".uploadProgressBar")
+        .attr("aria-valuenow", percentComplete)
+        .css("width", percentComplete + "%")
+        .text(percentComplete + "%");
+    }
+
+    function guid() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+      }
+      return (
+        s4() +
+        s4() +
+        "-" +
+        s4() +
+        "-" +
+        s4() +
+        "-" +
+        s4() +
+        "-" +
+        s4() +
+        s4() +
+        s4()
       );
     }
-  }
 
-  function upload_prgoress_html(percent) {
-    $("#id_modal").modal("show");
-    percentComplete = parseInt(parseFloat(percent) * 100);
-
-    $(".uploadProgressBar")
-      .attr("aria-valuenow", percentComplete)
-      .css("width", percentComplete + "%")
-      .text(percentComplete + "%");
-  }
-
-  function guid() {
-    function s4() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
+    // Script to include csrf on post method
+    function csrfSafeMethod(method) {
+      return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
     }
-    return (
-      s4() +
-      s4() +
-      "-" +
-      s4() +
-      "-" +
-      s4() +
-      "-" +
-      s4() +
-      "-" +
-      s4() +
-      s4() +
-      s4()
-    );
-  }
 
-  // Script to include csrf on post method
-  function csrfSafeMethod(method) {
-    return /^(GET|HEAD|OPTIONS|TRACE)$/.test(method);
-  }
-  
-  /**
+    /**
   $.ajaxSetup({
     crossDomain: false, // obviates need for sameOrigin test
     beforeSend: function (xhr, settings) {
@@ -239,20 +261,21 @@
   });
   */
 
-  function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== "") {
-      var cookies = document.cookie.split(";");
-      for (var i = 0; i < cookies.length; i++) {
-        var cookie = jQuery.trim(cookies[i]);
-        // Does this cookie string begin with the name we want?
-        if (cookie.substring(0, name.length + 1) === name + "=") {
-          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-          break;
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === name + "=") {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
         }
       }
+      return cookieValue;
     }
-    return cookieValue;
-  }
-</script>
-<body>
+  </script>
+  <body></body>
+</body>
